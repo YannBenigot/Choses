@@ -15,7 +15,8 @@ namespace Common
         public IHitbox Hitbox { get; set; }
         public IBehavior Behavior { get; set; }
 
-        public string Kind { get; set; }
+        public bool Dead { get { return State == EntityState.DEAD; } }
+
         public int Layer { get; set; }
 
         public Vector Position;
@@ -26,13 +27,12 @@ namespace Common
             return Hitbox.Collision(entity.Hitbox);
         }
 
-        public Entity(string kind, IGraphic graphic = null, IHitbox hitbox = null, IBehavior behavior = null, int layer = 1, Vector position = null, EntityState state = EntityState.ALIVE)
+        public Entity(IGraphic graphic = null, IHitbox hitbox = null, IBehavior behavior = null, int layer = 1, Vector position = null, EntityState state = EntityState.ALIVE)
         {
         }
+    }
 
-        public static Entity FromIPlayer(IPlayer player)
-        {
-            return new Entity("Player", graphic: player.GetRecommendedGraphic(), position: player.GetSuggestedPosition());
-        }
+    public class Player : Entity
+    {
     }
 }

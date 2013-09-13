@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Choses2", "Choses2\Choses2.csproj", "{A2C4EE24-E93D-4103-9CD0-68EFE86D9450}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{8CA46660-0B07-417A-804E-40841B779EFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAPI", "Common\GameAPI.csproj", "{8CA46660-0B07-417A-804E-40841B779EFA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGame", "TestGame\TestGame.csproj", "{5A845AEF-C6F3-459A-BBB4-3778B9444ED6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonBaseMock", "CommonBaseMock\CommonBaseMock.csproj", "{2D1DA1E1-BC51-4E2A-8B56-E14ACB44693E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseAPI", "BaseAPI\BaseAPI.csproj", "{031F84C5-173C-4DB6-8564-35346092ADEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMLBaseAPI", "SFMLBaseAPI\SFMLBaseAPI.csproj", "{76315128-53A6-4315-B657-9BF74B980FE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,14 @@ Global
 		{2D1DA1E1-BC51-4E2A-8B56-E14ACB44693E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D1DA1E1-BC51-4E2A-8B56-E14ACB44693E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D1DA1E1-BC51-4E2A-8B56-E14ACB44693E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{031F84C5-173C-4DB6-8564-35346092ADEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{031F84C5-173C-4DB6-8564-35346092ADEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{031F84C5-173C-4DB6-8564-35346092ADEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{031F84C5-173C-4DB6-8564-35346092ADEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76315128-53A6-4315-B657-9BF74B980FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76315128-53A6-4315-B657-9BF74B980FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76315128-53A6-4315-B657-9BF74B980FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76315128-53A6-4315-B657-9BF74B980FE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

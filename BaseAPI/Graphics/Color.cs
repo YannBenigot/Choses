@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Components
+namespace BaseAPI.Graphics
 {
-    public interface IGraphic
+    public struct Color
     {
-        public void Draw(IRenderTarget target);
+        public float r;
+        public float g;
+        public float b;
     }
 }

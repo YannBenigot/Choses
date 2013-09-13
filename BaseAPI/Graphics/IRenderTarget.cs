@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common
+namespace BaseAPI.Graphics
 {
-    public class RenderTarget
+    public class IRenderTarget
     {
     }
 }

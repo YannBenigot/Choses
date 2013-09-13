@@ -11,22 +11,21 @@ namespace Common.SimpleGame
         public abstract void DoShit(Game game);
     }
 
-    class Trigger_E : Trigger
+    class Trigger_E<E> : Trigger
+        where E: Entity
     {
-        Func<Entity, bool> Condition;
-        Action<Entity> Action;
-        string Kind;
+        Func<E, bool> Condition;
+        Action<E> Action;
 
-        public Trigger_E(string kind, Func<Entity, bool> condition, Action<Entity> action)
+        public Trigger_E(Func<E, bool> condition, Action<E> action)
         {
             Condition = condition;
             Action = action;
-            Kind = kind;
         }
 
         public void DoShit(Game game)
         {
-            foreach (Entity entity in game.Entities[Kind])
+            foreach (E entity in game.Entities.GetEntities<E>())
             {
                 if (Condition(entity))
                     Action(entity);
@@ -34,24 +33,23 @@ namespace Common.SimpleGame
         }
     }
 
-    class Trigger_EE : Trigger
+    class Trigger_EE <E1, E2> : Trigger
+        where E1: Entity
+        where E2: Entity
     {
-        Func<Entity, Entity, bool> Condition;
-        Action<Entity, Entity> Action;
-        string Kind1, Kind2;
+        Func<E1, E2, bool> Condition;
+        Action<E1, E2> Action;
 
-        public Trigger_EE(string kind1, string kind2, Func<Entity, Entity, bool> condition, Action<Entity, Entity> action)
+        public Trigger_EE(Func<E1, E2, bool> condition, Action<E1, E2> action)
         {
             Condition = condition;
             Action = action;
-            Kind1 = kind1;
-            Kind2 = kind2;
         }
 
         public void DoShit(Game game)
         {
-            foreach (Entity e1 in game.Entities[Kind1])
-                foreach (Entity e2 in game.Entities[Kind2])
+            foreach (E1 e1 in game.Entities.GetEntities<E1>())
+                foreach (E2 e2 in game.Entities.GetEntities<E2>())
                     if (Condition(e1, e2))
                         Action(e1, e2);
         }

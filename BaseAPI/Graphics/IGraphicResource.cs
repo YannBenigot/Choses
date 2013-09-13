@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Components
+namespace BaseAPI.Graphics
 {
-    public interface IGraphic
+    public class IGraphicResource
     {
-        public void Draw(IRenderTarget target);
     }
 }

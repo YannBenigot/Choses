@@ -43,8 +43,8 @@
     <Compile Include="Components\IGraphic.cs" />
     <Compile Include="Components\IHitbox.cs" />
     <Compile Include="IPlayer.cs" />
-    <Compile Include="RenderTarget.cs" />
     <Compile Include="SimpleGame\Entity.cs" />
+    <Compile Include="SimpleGame\EntityDictionary.cs" />
     <Compile Include="SimpleGame\Game.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

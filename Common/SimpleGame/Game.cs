@@ -10,11 +10,11 @@ namespace Common.SimpleGame
     {
         private readonly Entity[] Players;
         private readonly List<Trigger> Triggers;
-        public Dictionary<string, List<Entity>> Entities { get; set; }
+        public EntityDictionary Entities { get; set; }
 
-        public void Draw(RenderTarget target)
+        public void Draw(IRenderTarget target)
         {
-            foreach (Entity entity in Entities["All"])
+            foreach (Entity entity in Entities.GetEntities<Entity>())
             {
                 entity.Graphic.Draw(target);
             }
@@ -26,14 +26,33 @@ namespace Common.SimpleGame
                 trigger.DoShit(this);
         }
 
-        public void When(string kind, Func<Entity, bool> condition, Action<Entity> action)
+        public void When<E>(Func<E, bool> condition, Action<E> action)
+            where E: Entity
         {
-            Triggers.Add(new Trigger_E(kind, condition, action));
+            Triggers.Add(new Trigger_E<E>(condition, action));
         }
 
-        public void When(string k1, string k2, Func<Entity, Entity, bool> condition, Action<Entity, Entity> action)
+        public void When<E1, E2> (Func<E1, E2, bool> condition, Action<E1, E2> action)
+            where E1: Entity
+            where E2: Entity
         {
-            Triggers.Add(new Trigger_EE(k1, k2, condition, action));
+            Triggers.Add(new Trigger_EE<E1, E2>(condition, action));
+        }
+
+        public static Entity FromIPlayer(IPlayer player)
+        {
+            return new Player(graphic: player.GetRecommendedGraphic(), position: player.GetSuggestedPosition());
+        }
+
+        public void Spawn(IEnumerable<Entity> entities)
+        {
+            foreach (Entity entity in entities)
+                Spawn(entity);
+        }
+
+        public void Spawn(Entity entity)
+        {
+            Entities.Add(entity);
         }
 
         public abstract void Rules();
@@ -45,9 +64,10 @@ namespace Common.SimpleGame
         public IGame Create(IPlayer[] players)
         {
             Game game = new G();
-            game.Entities["Player"] = players.Select(player => Entity.FromIPlayer(player)).ToList();
-            game.Entities["All"] = new List<Entity>(game.Entities["Player"]);
+
             game.Rules();
+            game.Spawn(players.Select(player => game.FromIPlayer(player)));
+
             return game;
         }
     }
